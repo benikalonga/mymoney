@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "MyMoney",
+    "slug": "mymoney",
+    "scheme": "mymoney",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": { "image": "./assets/splash-icon.png", "resizeMode": "contain", "backgroundColor": "#0E2A25" },
+    "ios": { "bundleIdentifier": "app.mymoney.wallet", "supportsTablet": false, "infoPlist": { "ITSAppUsesNonExemptEncryption": false } },
+    "android": { "package": "app.mymoney.wallet", "adaptiveIcon": { "backgroundColor": "#0E2A25", "foregroundImage": "./assets/android-icon-foreground.png" } },
+    "plugins": ["expo-secure-store"]
+  }
+}

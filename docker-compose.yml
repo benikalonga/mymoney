@@ -1,0 +1,27 @@
+services:
+  api:
+    build: ./api
+    restart: unless-stopped
+    environment:
+      JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
+      PROVIDER_WEBHOOK_SECRET: ${PROVIDER_WEBHOOK_SECRET:?set PROVIDER_WEBHOOK_SECRET in .env}
+      PROVIDER_MODE: ${PROVIDER_MODE:-sandbox}
+      CORS_ORIGINS: ${CONSOLE_ORIGIN:-http://localhost:3100}
+    volumes:
+      - api-data:/data
+    ports:
+      - "4100:4100"
+
+  console:
+    build:
+      context: ./console
+      args:
+        NEXT_PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:4100/v1}
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "3100:3100"
+
+volumes:
+  api-data:
